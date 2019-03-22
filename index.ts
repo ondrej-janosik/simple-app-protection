@@ -41,7 +41,7 @@ export const protect = (
     promptPass(password, currentOptions.promptText);
   }
 
-  if (options.saveToCookie) {
+  if (currentOptions.saveToCookie) {
     set(currentOptions.cookieName, 'authorized', {
       expires: currentOptions.cookieExpirationInDays,
     });
