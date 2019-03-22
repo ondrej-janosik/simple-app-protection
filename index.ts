@@ -24,17 +24,26 @@ const promptPass = (password: string, text: string) => {
   }
 };
 
-export const protect = (password: string, options = defaultOptions) => {
+/**
+ * Protect app by prompting for password
+ * @param password
+ * @param options - options. Default values: { saveToCookie: true, cookieName: 'simple-app-protection', cookieExpirationInDays: 7, promptText: 'Enter password', turnOffInDevelopment: true}
+ */
+export const protect = (
+  password: string,
+  options: Partial<Options> = defaultOptions,
+) => {
+  const currentOptions = { ...defaultOptions, ...options };
   if (options.turnOffInDevelopment && process.env.NODE_ENV === 'development') {
     return;
   }
-  if (!get(options.cookieName)) {
-    promptPass(password, options.promptText);
+  if (!get(currentOptions.cookieName)) {
+    promptPass(password, currentOptions.promptText);
   }
 
   if (options.saveToCookie) {
-    set(options.cookieName, 'authorized', {
-      expires: options.cookieExpirationInDays,
+    set(currentOptions.cookieName, 'authorized', {
+      expires: currentOptions.cookieExpirationInDays,
     });
   }
 };
