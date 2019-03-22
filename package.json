@@ -1,6 +1,6 @@
 {
   "name": "simple-app-protection",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -26,6 +26,7 @@
     "js-cookie": "^2.2.0"
   },
   "devDependencies": {
-    "@types/js-cookie": "^2.2.1"
+    "@types/js-cookie": "^2.2.1",
+    "@types/node": "^11.11.5"
   }
 }
